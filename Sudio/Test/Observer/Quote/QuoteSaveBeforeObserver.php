@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Sudio\Test\Observer\Quote;
 
-use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\Response\RedirectInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Quote\Api\CartRepositoryInterface;
@@ -22,10 +21,6 @@ class QuoteSaveBeforeObserver implements ObserverInterface
 {
 
     /**
-     * @var Http
-     */
-    protected $request;
-    /**
      * @var RedirectInterface
      */
     protected $redirect;
@@ -41,18 +36,15 @@ class QuoteSaveBeforeObserver implements ObserverInterface
     /**
      * SaveBeforeObserver constructor.
      *
-     * @param Http $request
      * @param RedirectInterface $redirect
      * @param CartRepositoryInterface $quoteRepository
      * @param LoggerInterface $logger
      */
     public function __construct(
-        Http $request,
         RedirectInterface $redirect,
         CartRepositoryInterface $quoteRepository,
         LoggerInterface $logger
     ) {
-        $this->request = $request;
         $this->redirect = $redirect;
         $this->quoteRepository = $quoteRepository;
         $this->logger = $logger;
@@ -96,3 +88,4 @@ class QuoteSaveBeforeObserver implements ObserverInterface
 
     }
 }
+
